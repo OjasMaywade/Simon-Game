@@ -1,0 +1,34 @@
+var arr1 = [];
+var arr2 = [];
+document.addEventListener("keydown", function(){
+ document.querySelector("#level-title").innerHTML = "Level 1";
+ while(arr1.toString()==arr2.toString()){
+    patternGene();
+    arrayfn();
+ }
+})
+
+function patternGene(){
+    var num = Math.floor(Math.random()*4)
+    var t = document.querySelectorAll(".btn")[num].id;
+    document.querySelectorAll(".btn")[num].classList.add("pressed");
+    setTimeout( function(){
+        document.querySelectorAll(".btn")[num].classList.remove("pressed");
+    }, 100);
+    arr1.push(t);
+
+}
+
+function arrayfn(){
+for(var i=0; i<4; i++){
+
+    document.querySelectorAll(".btn")[i].addEventListener("click", function(event){
+        arr2.push(event.srcElement.id);
+        var f = document.getElementById(event.srcElement.id).id;
+        document.getElementsByClassName("event.srcElement.id").classList.add("game-over");
+        setTimeout( function(){
+            document.querySelectorAll(".event.srcElement.id").classList.remove("game-over");
+        }, 300);
+    })
+  }
+}
