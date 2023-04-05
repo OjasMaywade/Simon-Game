@@ -1,26 +1,37 @@
 var arr1 = [];
-var arr2 = [];
+var arr2=[];
 var level = 0;
-var len1 = arr1.length -1;
-var len2 = arr2.length -1;
+// var len1 = arr2.length -1;
+// var len2 = arr2.length -1;
 
-
+for(var j=0;j<4;j++){
+    document.querySelectorAll(".btn")[j].addEventListener("click", function(){
+    if(arr1[0]==null){
+      gameOver();
+    }
+});
+}
 document.addEventListener("keydown", function (){
     if(arr1[0]==null){
       gameStart();
+      
     }
+
 });
+
 userResponse();
-function checkAnswer(){
-if(arr1.length==arr2.length){
-    if(arr1[len1]===arr2[len2]){
+// Try to do it using map or forEach method
+function checkAnswer(len1){                
+    if(arr1[len1]===arr2[len1]){
+        if(arr1.length==arr2.length){
         setTimeout(gameStart, 500);                     
-        arr2 = [];
+    }
     }else{
         gameOver();
-    }
- }
-}   
+         }
+}
+
+
 
 
 
@@ -40,7 +51,7 @@ for(var i=0;i<4;i++){
             button_Clicked.classList.remove("pressed");                         // remove Css .pressed class after 100 ms
         }, 100);   
         arr2.push(pass.target.id);
-        checkAnswer();
+        checkAnswer(arr2.length -1);
         
     }
     );
@@ -60,10 +71,12 @@ audio.play();
     document.querySelector("body").classList.remove("game-over");
 }, 100);
 level = 0;
+arr1 = [];
 }
 
 // Code Snippet for Game Start
-function gameStart(){      
+function gameStart(){  
+       arr2 =[];    
        level++;            
         document.getElementById("level-title").innerHTML="Level "+level;        // Change the inner html of Title 
         let random = Math.floor((Math.random()*4));                   
@@ -87,7 +100,7 @@ function gameStart(){
             button_Pressed.classList.remove("visibility");                         // remove Css .visibility class after 100 ms
         }, 100);
         arr1.push(button_Pressed.id);
-        console.log(arr1)
+        // console.log(arr1)
 }
 
 
