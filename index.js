@@ -1,8 +1,7 @@
 var arr1 = [];
 var arr2=[];
+
 var level = 0;
-// var len1 = arr2.length -1;
-// var len2 = arr2.length -1;
 
 for(var j=0;j<4;j++){
     document.querySelectorAll(".btn")[j].addEventListener("click", function(){
@@ -14,7 +13,11 @@ for(var j=0;j<4;j++){
 document.addEventListener("keydown", function (){
     if(arr1[0]==null){
       gameStart();
-      
+    }
+});
+document.querySelector(".start").addEventListener("click", function (){
+    if(arr1[0]==null){
+      gameStart();
     }
 
 });
@@ -61,7 +64,8 @@ for(var i=0;i<4;i++){
 
 // Code Snippet for Game Over 
 function gameOver(){
-document.getElementById("level-title").innerHTML="Game Over, Press Any Key to Restart"; //Get element by id and manipulates its inner html
+    const highScore = level-1;
+document.getElementById("level-title").innerHTML="Game Over \nYour Score is " + highScore +"\nPress Any Key to Restart"; //Get element by id and manipulates its inner html
 
 var audio = new Audio('sounds/wrong.mp3');           //input error sound into code
 audio.play();
@@ -82,7 +86,7 @@ function gameStart(){
         let random = Math.floor((Math.random()*4));                   
         if(random==0){                                                   // if statement for sound
             var audio = new Audio('sounds/green.mp3');                               
-            audio.play();         
+            audio.play();                                                 // make this short
         } else if(random==1){
             var audio = new Audio('sounds/red.mp3');                                
             audio.play();         

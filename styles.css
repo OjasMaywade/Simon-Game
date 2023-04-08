@@ -54,3 +54,10 @@ body {
 .visibility{
   visibility: hidden;
 }
+
+.start{
+  width: 100px;
+  height: 25px ;
+  border-radius: 10px;
+  background-color: #B0DAFF;
+}
